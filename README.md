@@ -1,6 +1,6 @@
 # SFAW Workshop React useForm
 
-### Intro (5 mins)
+### Intro
 
 - **What useForm and useFormContext are:**
   - useForm: A custom React Hook that simplifies form validation and data submission.
@@ -12,7 +12,7 @@
 
 ---
 
-### Basic Setup (10 mins)
+### Basic Setup
 
 - **Installing Required Packages:**
   - Running `npm install react-hook-form` or the current command.
@@ -23,7 +23,7 @@
 
 ---
 
-### useForm Basics (15 mins)
+### useForm Basics
 
 - **Main Methods:**
   - `handleSubmit`: Wraps your submit function, taking care of validation.
@@ -37,7 +37,7 @@
 
 ---
 
-### useFormContext (10 mins)
+### useFormContext
 
 - **Intro to useFormContext:**
   - When and why to use `useFormContext`.
@@ -49,7 +49,7 @@
 
 ---
 
-### Advanced Usage (10 mins)
+### Advanced Usage
 
 - **Custom Hooks:**
   - Creating custom hooks that utilize `useForm` or `useFormContext` for reusable form logic.
@@ -59,7 +59,7 @@
 
 ---
 
-### Common Pitfalls & Best Practices (5 mins)
+### Common Pitfalls & Best Practices
 
 - **Things to Watch For:**
   - Overcomplicating validation logic.
@@ -71,6 +71,6 @@
 
 ---
 
-### Q&A (5 mins)
+### Q&A
 
 - Open the floor for questions. Have some FAQs prepared just in case it's a shy crowd.
