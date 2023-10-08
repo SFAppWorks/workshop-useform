@@ -1,3 +1,4 @@
+import Input from "@/components/input";
 import {add, isBefore} from "date-fns";
 import {useState} from "react";
 
@@ -46,16 +47,8 @@ const HomePage = () => {
         <div>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Email</label>
-                    <input type="email" name="email" autoComplete={"email"} value={formData.email} onChange={handleChange} />
-                    {errors.email && <span>{errors.email}</span>}
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input type="password" autoComplete={"new-password"} name="password" value={formData.password} onChange={handleChange} />
-                    {errors.password && <span>{errors.password}</span>}
-                </div>
+                <Input type='email' label={'Email'} autoComplete={'email'} name={'email'} stateValue={formData.email} onChange={handleChange} errors={errors.email}/>
+                <Input type='password' label={'Password'} autoComplete={'new-password'} name={'password'} stateValue={formData.password} onChange={handleChange} errors={errors.email}/>
                 <button type="submit">Submit</button>
             </form>
         </div>
