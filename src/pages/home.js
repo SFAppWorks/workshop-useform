@@ -1,5 +1,6 @@
 import Input from "@/components/input";
-import RandomTable from "@/containers/random-table";
+import dynamic from "next/dynamic";
+const DynamicRandomTable = dynamic(() => import('../containers/random-table'), { ssr: false });
 import {useState} from "react";
 
 const HomePage = () => {
@@ -18,7 +19,10 @@ const HomePage = () => {
             <h1>Welcome SFAW</h1>
             <Input type={'text'} label={'Search'} name={'search'} onChange={handleSearchChange} stateValue={searchValue} />
             <button type="button" onClick={doSearch}>Search</button>
-            <RandomTable />
+            <br />
+            <br />
+            <br />
+            <DynamicRandomTable />
         </div>
     );
 };
