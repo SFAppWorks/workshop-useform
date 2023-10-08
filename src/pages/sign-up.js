@@ -2,7 +2,7 @@ import Input from "@/components/input";
 import {add, isBefore} from "date-fns";
 import {useState} from "react";
 
-const HomePage = () => {
+const SignupPage = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -10,6 +10,12 @@ const HomePage = () => {
     password: '',
     confirmPassword: '',
     dateOfBirth: '',
+
+    addressLine1: '',
+    addressLine2: '',
+    city: '',
+    state: '',
+    zipCode: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -34,6 +40,7 @@ const HomePage = () => {
     if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of Birth is required'
     if (formData.dateOfBirth && !isOver18(formData.dateOfBirth)) newErrors.dateOfBirth = 'You must be at least 18 years of age to use this website'
 
+    if (formData.zipCode && formData.zipCode.length < 5) newErrors.zipCode = 'Your zip code must contain 5 digits'
     setErrors(newErrors);
 
     // If no errors, return true
@@ -57,16 +64,25 @@ const HomePage = () => {
       <div>
         <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
+          <br/>
+          <h2>Personal Information</h2>
           <Input label={'First Name'} name={'firstName'} stateValue={formData.firstName} onChange={handleChange} errors={errors.firstName}/>
           <Input label={'Last Name'} name={'lastName'} stateValue={formData.lastName} onChange={handleChange} errors={errors.lastName}/>
           <Input type='date' label={'Date of Birth'} name={'dateOfBirth'} stateValue={formData.dateOfBirth} onChange={handleChange} errors={errors.dateOfBirth}/>
           <Input type='email' label={'Email'} autoComplete={'email'} name={'email'} stateValue={formData.email} onChange={handleChange} errors={errors.email}/>
           <Input type='password' label={'Password'} autoComplete={'new-password'} name={'password'} stateValue={formData.password} onChange={handleChange} errors={errors.email}/>
           <Input type='password' label={'Confirm Password'} autoComplete={'new-password'} name={'confirmPassword'} stateValue={formData.confirmPassword} onChange={handleChange} errors={errors.confirmPassword}/>
+          <br/>
+          <h2>Address Information</h2>
+          <Input type='text' label={'Address Line 1'} name={'addressLine1'} stateValue={formData.addressLine1} onChange={handleChange} />
+          <Input type='text' label={'Address Line 2'} name={'addressLine2'} stateValue={formData.addressLine2} onChange={handleChange} />
+          <Input type='text' label={'City'} name={'city'} stateValue={formData.city} onChange={handleChange} />
+          <Input type='text' label={'State'} name={'state'} stateValue={formData.state} onChange={handleChange} />
+          <Input type='number' label={'Zip Code'} name={'zipCode'} stateValue={formData.zipCode} onChange={handleChange} errors={errors.zipCode}/>
           <button type="submit">Submit</button>
         </form>
       </div>
   );
 };
 
-export default HomePage;
+export default SignupPage;

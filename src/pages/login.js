@@ -1,8 +1,7 @@
 import Input from "@/components/input";
-import {add, isBefore} from "date-fns";
 import {useState} from "react";
 
-const HomePage = () => {
+const LoginPage = () => {
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -55,4 +54,4 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default LoginPage;
