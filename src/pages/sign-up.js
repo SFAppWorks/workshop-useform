@@ -1,4 +1,5 @@
 import Input from "@/components/input";
+import AddressWrapper from "@/containers/address-wrapper";
 import {add, isBefore} from "date-fns";
 import {useState} from "react";
 
@@ -73,12 +74,7 @@ const SignupPage = () => {
           <Input type='password' label={'Password'} autoComplete={'new-password'} name={'password'} stateValue={formData.password} onChange={handleChange} errors={errors.email}/>
           <Input type='password' label={'Confirm Password'} autoComplete={'new-password'} name={'confirmPassword'} stateValue={formData.confirmPassword} onChange={handleChange} errors={errors.confirmPassword}/>
           <br/>
-          <h2>Address Information</h2>
-          <Input type='text' label={'Address Line 1'} name={'addressLine1'} stateValue={formData.addressLine1} onChange={handleChange} />
-          <Input type='text' label={'Address Line 2'} name={'addressLine2'} stateValue={formData.addressLine2} onChange={handleChange} />
-          <Input type='text' label={'City'} name={'city'} stateValue={formData.city} onChange={handleChange} />
-          <Input type='text' label={'State'} name={'state'} stateValue={formData.state} onChange={handleChange} />
-          <Input type='number' label={'Zip Code'} name={'zipCode'} stateValue={formData.zipCode} onChange={handleChange} errors={errors.zipCode}/>
+          <AddressWrapper formData={formData} errors={errors} handleChange={handleChange}/>
           <button type="submit">Submit</button>
         </form>
       </div>

@@ -1,4 +1,5 @@
 import Input from "@/components/input";
+import AddressWrapper from "@/containers/address-wrapper";
 import {add, isBefore} from "date-fns";
 import {useState} from "react";
 
@@ -49,12 +50,7 @@ const AddNewAddress = () => {
             <h1>Add New Address</h1>
             <form onSubmit={handleSubmit}>
                 <br/>
-                <h2>Address Information</h2>
-                <Input type='text' label={'Address Line 1'} name={'addressLine1'} stateValue={formData.addressLine1} onChange={handleChange} errors={errors.addressLine1}/>
-                <Input type='text' label={'Address Line 2'} name={'addressLine2'} stateValue={formData.addressLine2} onChange={handleChange} errors={errors.addressLine2} />
-                <Input type='text' label={'City'} name={'city'} stateValue={formData.city} onChange={handleChange} errors={errors.city} />
-                <Input type='text' label={'State'} name={'state'} stateValue={formData.state} onChange={handleChange} errors={errors.state} />
-                <Input type='number' label={'Zip Code'} name={'zipCode'} stateValue={formData.zipCode} onChange={handleChange} errors={errors.zipCode}/>
+                <AddressWrapper formData={formData} errors={errors} handleChange={handleChange}/>
                 <button type="submit">Submit</button>
             </form>
         </div>
