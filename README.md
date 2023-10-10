@@ -73,4 +73,4 @@
 
 ### Q&A
 
-- Open the floor for questions. Have some FAQs prepared just in case it's a shy crowd.
+- Questions
