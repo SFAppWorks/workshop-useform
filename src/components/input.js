@@ -1,10 +1,13 @@
+import useCustomField from "@/hooks/use-custom-field";
 
-const Input = ({type='text', label, name, stateValue, onChange, errors, autoComplete}) => {
+const Input = ({type = 'text', label, name, autoComplete, validations}) => {
+    const {customRegister, customErrors} = useCustomField(name, validations)
+
     return (
         <div>
             <label>{label}</label>
-            <input type={type} autoComplete={autoComplete} name={name} value={stateValue} onChange={onChange} />
-            {errors && <span>{errors}</span>}
+            <input {...customRegister} type={type} autoComplete={autoComplete} name={name}/>
+            {customErrors && <span>{customErrors.message}</span>}
         </div>
     )
 };
