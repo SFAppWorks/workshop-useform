@@ -1,7 +1,9 @@
+import Input from "@/components/input";
+import AddressWrapper from "@/containers/address-wrapper";
 import {add, isBefore} from "date-fns";
 import {useState} from "react";
 
-const HomePage = () => {
+const SignupPage = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -9,6 +11,12 @@ const HomePage = () => {
     password: '',
     confirmPassword: '',
     dateOfBirth: '',
+
+    addressLine1: '',
+    addressLine2: '',
+    city: '',
+    state: '',
+    zipCode: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -33,6 +41,7 @@ const HomePage = () => {
     if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of Birth is required'
     if (formData.dateOfBirth && !isOver18(formData.dateOfBirth)) newErrors.dateOfBirth = 'You must be at least 18 years of age to use this website'
 
+    if (formData.zipCode && formData.zipCode.length < 5) newErrors.zipCode = 'Your zip code must contain 5 digits'
     setErrors(newErrors);
 
     // If no errors, return true
@@ -56,40 +65,20 @@ const HomePage = () => {
       <div>
         <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>First Name</label>
-            <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
-            {errors.firstName && <span>{errors.firstName}</span>}
-          </div>
-          <div>
-            <label>Last Name</label>
-            <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
-            {errors.lastName && <span>{errors.lastName}</span>}
-          </div>
-          <div>
-            <label>Date of Birth</label>
-            <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} />
-            {errors.dateOfBirth && <span>{errors.dateOfBirth}</span>}
-          </div>
-          <div>
-            <label>Email</label>
-            <input type="email" name="email" autoComplete={"email"} value={formData.email} onChange={handleChange} />
-            {errors.email && <span>{errors.email}</span>}
-          </div>
-          <div>
-            <label>Password</label>
-            <input type="password" autoComplete={"new-password"} name="password" value={formData.password} onChange={handleChange} />
-            {errors.password && <span>{errors.password}</span>}
-          </div>
-          <div>
-            <label>Confirm Password</label>
-            <input type="password" autoComplete={"new-password"} name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} />
-            {errors.confirmPassword && <span>{errors.confirmPassword}</span>}
-          </div>
+          <br/>
+          <h2>Personal Information</h2>
+          <Input label={'First Name'} name={'firstName'} stateValue={formData.firstName} onChange={handleChange} errors={errors.firstName}/>
+          <Input label={'Last Name'} name={'lastName'} stateValue={formData.lastName} onChange={handleChange} errors={errors.lastName}/>
+          <Input type='date' label={'Date of Birth'} name={'dateOfBirth'} stateValue={formData.dateOfBirth} onChange={handleChange} errors={errors.dateOfBirth}/>
+          <Input type='email' label={'Email'} autoComplete={'email'} name={'email'} stateValue={formData.email} onChange={handleChange} errors={errors.email}/>
+          <Input type='password' label={'Password'} autoComplete={'new-password'} name={'password'} stateValue={formData.password} onChange={handleChange} errors={errors.email}/>
+          <Input type='password' label={'Confirm Password'} autoComplete={'new-password'} name={'confirmPassword'} stateValue={formData.confirmPassword} onChange={handleChange} errors={errors.confirmPassword}/>
+          <br/>
+          <AddressWrapper formData={formData} errors={errors} handleChange={handleChange}/>
           <button type="submit">Submit</button>
         </form>
       </div>
   );
 };
 
-export default HomePage;
+export default SignupPage;
